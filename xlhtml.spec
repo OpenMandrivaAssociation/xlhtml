@@ -9,6 +9,7 @@ Summary:      Excel 95 and later file converter
 URL:          http://chicago.sourceforge.net/xlhtml/
 Source:       %{name}-%{version}.tar.bz2
 Patch:        %{name}-%{version}.diff
+BuildRoot:    %{_tmppath}/%{name}-%{version}-build
 Buildrequires: automake
 %if %mdkversion >= 1020
 BuildRequires:  multiarch-utils >= 1.0.3
