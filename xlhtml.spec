@@ -81,9 +81,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/xlhtml
 %{_mandir}/*/*
 
+%if %mdkversion < 200900
 %post -n xlhtml-cole -p /sbin/ldconfig
+%endif
 
+%if %mdkversion < 200900
 %postun -n xlhtml-cole -p /sbin/ldconfig
+%endif
 
 %files -n xlhtml-cole
 %defattr(-,root,root)
