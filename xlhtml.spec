@@ -24,8 +24,6 @@ to pure text rather than html.
 %package -n xlhtml-cole
 Summary:      Free C OLE library
 Group:        Development/C++
-Autoreqprov:  on
-#Provides:     xlhtml-cole
 
 %description -n xlhtml-cole
 Using cole, you can access Microsoft "Structured Storage" files. The
@@ -36,24 +34,20 @@ format is "Structured Storage", too.
 
 
 %prep
-%setup
-%patch
+%setup -q
+%patch -p0
 
 mv ppthtml/README README-ppthtml
 
 %build
-libtoolize --force
-aclocal
-autoconf
-rm -f missing # Get newest from automake
-#touch README
-automake -a
-./configure --prefix=%{_prefix} --libdir=%{_libdir} --mandir=%{_mandir}
-make
-make -C cole/utils
+autoreconf -fi
+%configure2_5x
+%make
+%make -C cole/utils
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
+rm -fr %buildroot
+%makeinstall_std
 # xlhtml-cole
 install -m 755 cole/cole-config $RPM_BUILD_ROOT/usr/bin
 mkdir -p $RPM_BUILD_ROOT/%{_includedir}/cole
