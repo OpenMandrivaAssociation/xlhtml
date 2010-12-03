@@ -1,6 +1,6 @@
 Name:         xlhtml
 Version:      0.5
-Release:      %mkrel 10
+Release:      %mkrel 11
 License:      GPL
 Group:        Text tools
 Requires:     xlhtml-cole
