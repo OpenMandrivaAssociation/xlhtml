@@ -1,6 +1,6 @@
 Name:         xlhtml
 Version:      0.5
-Release:      %mkrel 11
+Release:      %mkrel 12
 License:      GPL
 Group:        Text tools
 Requires:     xlhtml-cole
@@ -10,9 +10,6 @@ Source:       %{name}-%{version}.tar.bz2
 Patch:        %{name}-%{version}.diff
 BuildRoot:    %{_tmppath}/%{name}-%{version}-build
 Buildrequires: automake
-%if %mdkversion >= 1020
-BuildRequires:  multiarch-utils >= 1.0.3
-%endif
 
 %description
 xlHtml is an Excel 95 and later file converter. Its html output can be
@@ -56,9 +53,8 @@ install cole/utils/cole_extract $RPM_BUILD_ROOT/%{_bindir}
 install cole/utils/cole_isfs $RPM_BUILD_ROOT/%{_bindir}
 install cole/utils/cole_isfs_fast $RPM_BUILD_ROOT/%{_bindir}
 install cole/utils/cole_tree $RPM_BUILD_ROOT/%{_bindir}
-%if %mdkversion >= 1020
+
 %multiarch_binaries %{buildroot}%{_bindir}/cole-config
-%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT 
@@ -86,10 +82,8 @@ rm -rf $RPM_BUILD_ROOT
 %files -n xlhtml-cole
 %defattr(-,root,root)
 %doc AUTHORS COPYING INSTALL ChangeLog NEWS cole/TODO README
-%if %mdkversion >= 1020
-%multiarch %{multiarch_bindir}/cole-config
-%endif
 %{_bindir}/cole-config
+%{multiarch_bindir}/cole-config
 %{_bindir}/cole_extract
 %{_bindir}/cole_isfs
 %{_bindir}/cole_isfs_fast
