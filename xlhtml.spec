@@ -46,18 +46,18 @@ autoreconf -fi
 rm -fr %buildroot
 %makeinstall_std
 # xlhtml-cole
-install -m 755 cole/cole-config $RPM_BUILD_ROOT/usr/bin
-mkdir -p $RPM_BUILD_ROOT/%{_includedir}/cole
-install cole/cole.h  $RPM_BUILD_ROOT/%{_includedir}/cole
-install cole/utils/cole_extract $RPM_BUILD_ROOT/%{_bindir}
-install cole/utils/cole_isfs $RPM_BUILD_ROOT/%{_bindir}
-install cole/utils/cole_isfs_fast $RPM_BUILD_ROOT/%{_bindir}
-install cole/utils/cole_tree $RPM_BUILD_ROOT/%{_bindir}
+install -m 755 cole/cole-config %{buildroot}/usr/bin
+mkdir -p %{buildroot}/%{_includedir}/cole
+install cole/cole.h  %{buildroot}/%{_includedir}/cole
+install cole/utils/cole_extract %{buildroot}/%{_bindir}
+install cole/utils/cole_isfs %{buildroot}/%{_bindir}
+install cole/utils/cole_isfs_fast %{buildroot}/%{_bindir}
+install cole/utils/cole_tree %{buildroot}/%{_bindir}
 
 %multiarch_binaries %{buildroot}%{_bindir}/cole-config
 
 %clean
-rm -rf $RPM_BUILD_ROOT 
+rm -rf %{buildroot} 
 
 %files
 %defattr(-,root,root)
