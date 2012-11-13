@@ -1,0 +1,69 @@
+--- cole/Makefile.am.orig	2002-04-09 02:10:48.000000000 +0200
++++ cole/Makefile.am	2009-04-13 07:48:28.000000000 +0200
+@@ -2,7 +2,9 @@
+ 
+ EXTRA_DIST = README-cole README-CVS DOWNLOAD ChangeLog ChangeLog-from1to2 TODO THANKS AUTHORS BUGS doc/* examples/* utils/* 
+ 
+-noinst_LIBRARIES = libcole.a 
+-libcole_a_SOURCES = cole.c internal.c oledecod.c olecod.c support.c version.c internal.h support.h 
++# noinst_LIBRARIES = libcole.a 
++lib_LTLIBRARIES = libcole.la
++libcole_la_LDFLAGS = -version-info @VERSION_INFO@
++libcole_la_SOURCES = cole.c internal.c oledecod.c olecod.c support.c version.c internal.h support.h
+ AM_CFLAGS = -Wall -Wcast-align -Wpointer-arith 
+ 
+--- cole/utils/Makefile.am.orig	2002-03-20 16:32:41.000000000 +0100
++++ cole/utils/Makefile.am	2009-04-13 07:48:28.000000000 +0200
+@@ -1,7 +1,7 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-INCLUDES = -I$(top_srcdir)
+-LDADD = $(top_builddir)/libcole.la
++INCLUDES = -I$(top_srcdir)/cole
++LDADD = $(top_builddir)/cole/libcole.la
+ 
+ noinst_PROGRAMS = cole_tree cole_isfs cole_isfs_fast cole_extract
+ 
+--- configure.in.orig	2002-04-11 19:42:27.000000000 +0200
++++ configure.in	2009-04-13 07:48:28.000000000 +0200
+@@ -16,6 +16,7 @@
+ AM_INIT_AUTOMAKE(xlhtml/xlhtml, 0.4.9.3)
+ AM_CONFIG_HEADER(config.h)
+ 
++AC_PROG_LIBTOOL
+ AC_PROG_CC
+ AC_PROG_RANLIB
+ AC_ISC_POSIX
+@@ -57,8 +58,9 @@
+ AC_SUBST(COLE_MAJOR)
+ AC_SUBST(COLE_MINOR)
+ AC_SUBST(COLE_MICRO)
+-  
++let COLE_MAJOR_PLUS_COLE_MINOR=COLE_MAJOR+COLE_MINOR
++AC_SUBST(VERSION_INFO, [$COLE_MAJOR_PLUS_COLE_MINOR:$COLE_MICRO:$COLE_MINOR])  
+ 
+-AC_OUTPUT([Makefile cole/Makefile cole/version.c cole/cole.h xlhtml/Makefile ppthtml/Makefile])
++AC_OUTPUT([Makefile cole/Makefile cole/version.c cole/cole.h cole/cole-config cole/utils/Makefile xlhtml/Makefile ppthtml/Makefile])
+ 
+ 
+--- ppthtml/Makefile.am.orig	2002-04-09 02:10:48.000000000 +0200
++++ ppthtml/Makefile.am	2009-04-13 07:48:28.000000000 +0200
+@@ -8,6 +8,6 @@
+ man_MANS = ppthtml.1
+ bin_SCRIPTS = nspptview
+ bin_PROGRAMS = ppthtml
+-LDADD = ../cole/libcole.a
++LDADD = ../cole/libcole.la
+ ppthtml_SOURCES = ppthtml.c 
+ AM_CFLAGS = -Wall -Wshadow -Wcast-align -Wpointer-arith 
+--- xlhtml/Makefile.am.orig	2002-04-11 17:03:52.000000000 +0200
++++ xlhtml/Makefile.am	2009-04-13 07:48:28.000000000 +0200
+@@ -8,7 +8,7 @@
+ man_MANS = xlhtml.1
+ bin_SCRIPTS = nsopen nsxlview
+ bin_PROGRAMS = xlhtml
+-LDADD = ../cole/libcole.a
++LDADD = ../cole/libcole.la
+ xlhtml_SOURCES = support.c xlhtml.c html.c ascii.c xml.c 
+ xldump_SOURCES = xldump.c 
+ xlcdump_SOURCES = xlcdump.c 
