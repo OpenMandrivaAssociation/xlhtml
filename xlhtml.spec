@@ -8,6 +8,7 @@ Summary:      Excel 95 and later file converter
 URL:          http://chicago.sourceforge.net/xlhtml/
 Source:       %{name}-%{version}.tar.bz2
 Patch:        %{name}-%{version}.diff
+Patch1:       xlhtml-automake-1.13.patch
 BuildRoot:    %{_tmppath}/%{name}-%{version}-build
 Buildrequires: automake
 
@@ -33,6 +34,7 @@ format is "Structured Storage", too.
 %prep
 %setup -q
 %patch -p0
+%patch1 -p1 -b .am13~
 
 mv ppthtml/README README-ppthtml
 

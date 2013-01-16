@@ -1,0 +1,11 @@
+--- xlhtml-0.5/configure.in.bero	2013-01-16 04:07:21.176758700 +0100
++++ xlhtml-0.5/configure.in	2013-01-16 04:07:28.433671894 +0100
+@@ -14,7 +14,7 @@ AC_SUBST(HOST_VENDOR)
+ AC_SUBST(HOST_OS)
+  
+ AM_INIT_AUTOMAKE(xlhtml/xlhtml, 0.4.9.3)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS([config.h])
+ 
+ AC_PROG_LIBTOOL
+ AC_PROG_CC
