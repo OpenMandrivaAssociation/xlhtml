@@ -1,12 +1,13 @@
 Name:         xlhtml
 Version:      0.5
-Release:      %mkrel 12
+Release:      13
 License:      GPL
 Group:        Text tools
 Requires:     xlhtml-cole
 Summary:      Excel 95 and later file converter
 URL:          http://chicago.sourceforge.net/xlhtml/
 Source:       %{name}-%{version}.tar.bz2
+Source100:	%{name}.rpmlintrc
 Patch:        %{name}-%{version}.diff
 Patch1:       xlhtml-automake-1.13.patch
 BuildRoot:    %{_tmppath}/%{name}-%{version}-build
