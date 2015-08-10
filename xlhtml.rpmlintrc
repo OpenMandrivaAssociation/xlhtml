@@ -1,3 +1,4 @@
 #false positive
 addFilter('E: incoherent-version-in-name')
+addFilter('E: devel-file-in-non-devel-package')
 
