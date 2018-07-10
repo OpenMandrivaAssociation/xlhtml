@@ -1,6 +1,6 @@
 Name:         xlhtml
 Version:      0.5
-Release:      22
+Release:      23
 License:      GPL
 Group:        Text tools
 Requires:     xlhtml-cole
@@ -132,7 +132,7 @@ rm -rf $RPM_BUILD_ROOT
   + Thierry Vignaud <tv@mandriva.org>
     - kill re-definition of %%buildroot on Pixel's request
 
-* Sat Aug 25 2007 Gaëtan Lehmann <glehmann@mandriva.org> 0.5-7mdv2008.0
+* Sat Aug 25 2007 GaÃ«tan Lehmann <glehmann@mandriva.org> 0.5-7mdv2008.0
 + Revision: 71336
 - rebuild
 
@@ -155,7 +155,7 @@ Import xlhtml
 - fix url (bug #16708)
 - use mkrel
 
-* Sat Apr 16 2005 Giuseppe Ghib� <ghibo@mandriva.com> 0.5-2mdk
+* Sat Apr 16 2005 Giuseppe Ghibò <ghibo@mandriva.com> 0.5-2mdk
 - %%multiarch.
 
 * Tue Jan 18 2005 Gaetan Lehmann <gaetan.lehmann@jouy.inra.fr> 0.5-1mdk
