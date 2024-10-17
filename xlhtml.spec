@@ -5,7 +5,7 @@ License:      GPL
 Group:        Text tools
 Requires:     xlhtml-cole
 Summary:      Excel 95 and later file converter
-URL:          http://chicago.sourceforge.net/xlhtml/
+URL:          https://chicago.sourceforge.net/xlhtml/
 Source:       %{name}-%{version}.tar.bz2
 Source100:	%{name}.rpmlintrc
 Patch:        %{name}-%{version}.diff
